@@ -1,0 +1,110 @@
+
+#
+#  ███████╗██╗  ██╗██╗  ██╗██╗  ██╗██████╗ 
+#  ██╔════╝╚██╗██╔╝██║  ██║██║ ██╔╝██╔══██╗
+#  ███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║
+#  ╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║
+#  ███████║██╔╝ ██╗██║  ██║██║  ██╗██████╔╝
+#  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ 
+#
+#  https://github.com/baskerville/sxhkd
+#
+
+# Volume Control
+XF86AudioRaiseVolume
+    dash -c "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +5%"
+
+XF86AudioLowerVolume
+    dash -c "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -5%"
+
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Media Control
+XF86AudioPlay
+    mpc toggle
+XF86AudioStop
+    mpc stop
+XF86AudioNext
+    mpc next
+XF86AudioPrev
+    mpc prev
+super + XF86AudioRaiseVolume
+    mpc volume +5
+super + XF86AudioRaiseVolume
+    mpc volume -5
+
+# Terminal Emulator
+super + Return
+    kitty	
+
+# Program Launcher
+super + d
+    rofi -show run	
+
+# Pass Launcher
+super + shift + d
+    rofi-pass
+
+# screen lock
+super + shift + z
+    glitchlock
+
+#
+# berry hotkeys
+#
+
+super + {h, j, k, l}
+    berryc window_move {-50 0, 0 50, 0 -50, 50 0}
+
+super + shift +  {h, j, k, l}
+    berryc window_resize {-50 0, 0 50, 0 -50, 50 0}
+
+super + {1-9}
+    berryc switch_workspace {0-9}
+
+super + shift + {0-9}
+    berryc send_to_workspace {0-9}
+
+super + m
+    berryc window_monocle
+
+super + f
+    berryc fullscreen
+
+super +  p
+    berryc snap_right
+
+super + o
+    berryc snap_left
+
+super + n
+    berryc toggle_decorations
+
+super + Tab
+    berryc cycle_focus
+
+super + q
+    berryc window_close
+
+super + c
+    berryc window_center
+
+~button1
+    berryc pointer_focus
+
+# Reload this sxhkd config file 
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# Reload wallpaper
+super + alt + w
+    feh --bg-fill --no-fehbg --randomize ~/Images/Wallpapers
+
+# Capture Screenshot
+Print
+    maim -u ~/Images/Captures/$(date +%s).png && dunstify "Cheese!~" "Screenshot saved to ~/Images/Captures"
+
+# Capture Selection 
+super + Print
+    maim -su ~/Images/Captures/$(date +%s).png && dunstify "Cheese!~" "Selection saved to ~/Images/Captures"
