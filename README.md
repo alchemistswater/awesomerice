@@ -8,10 +8,10 @@ Programs have been chosen at random based on other peoples skill and knowledge. 
 
 **Default programs**
 
-* **Window Manager**: herbstluftwm
+* **Window Manager**: awesome
 * **Terminal**: Kitty
-* **Status Bar**: Polybar
-* **Shell**: bash/promptless 
+* **Status Bar**: default awesome bar
+* **Shell**: Oh-My-Bash
 * **App Launcher**: Rofi
 * **System Info**: pfetch
 * **Text Editor**: gvim
@@ -19,13 +19,12 @@ Programs have been chosen at random based on other peoples skill and knowledge. 
 * **Notifications**: xfce4-notifyd
 * **PDF Reader**: zathura
 * **Screenshot Tool**: scrot
-* **Image Viewer**: feh
+* **Image Viewer**: sxiv
 * **Video Player**: mpv
 * **Music Player**: mpd/ncmpcpp
 * **ls**: exa 
 * **Fuzzy Search**: fzf
 * **File Manager**: fff
-* **Image Viewer**: feh
 * **Music Daemon**: mpd
 * **Music Player**: ncmpcpp
 * **find**: fd
@@ -38,8 +37,8 @@ Programs have been chosen at random based on other peoples skill and knowledge. 
 This little script will install a collection of command line tools, a window manager, and a terminal emulator. Installation is easy:
 
 1. Install Arch Linux and make sure you have `base-devel` and `git` packages.
-2. `git clone https://github.com/alchemistswater/quickrice`
-3. `cd quickrice` (You **must** be inside the cloned directory)
+2. `git clone https://github.com/alchemistswater/awesomerice`
+3. `cd awesomerice` (You **must** be inside the cloned directory)
 4. `sh setup.sh`
 5. Restart your computer after the script finishes.
 
@@ -49,7 +48,7 @@ This script does nothing past providing you with dotfiles for the programs it in
 
 With that said. There are some important aspects that should give some comfort:
 
-1. Everything is *nearly* default. 
+1. Everything is probably broken and slightly nord. 
 2. No magic. The dotfiles are organized in the simplest and most logical structure possible. 
 3. Theres not much here. You can look through everything in about an hour. 
 
