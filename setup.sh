@@ -34,26 +34,33 @@ sudo install -Dm 644 other/dashbinsh.hook /usr/share/libalpm/hooks/
 sudo install -Dm 644 other/50-mouse-acceleration.conf /etc/X11/xorg.conf.d/
 
 # Make some folders. Screenshots will go in the captures folder.
-mkdir -p ~/.config ~/.aurpkgs ~/Images/Captures ~/Images/Wallpapers \
+mkdir -p ~/.config ~/.build ~/Images/Captures ~/Images/Wallpapers \
             $LINKDOT/config/mpd/playlists ~/Music
 
 # Move provided wallpapers to the wallpapers folder
 cp -r wallpapers/* ~/Images/Wallpapers
 
 # Clone some yay goodness
-git clone https://aur.archlinux.org/yay.git ~/.aurpkgs/yay
+git clone https://aur.archlinux.org/yay.git ~/.build/yay
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+git clone https://github.com/horst3180/arc-icon-theme --depth 1 ~/.build/arc-icon-theme
 
 # Install them
-cd ~/.aurpkgs/yay
+cd ~/.build/yay
 makepkg -si
 
 yay -S picom rofi-pass pass-otp pfetch-git \
-            ckb-next kube \
+            ckb-next kube moka-icon-theme \
 	    sox imagemagick i3lock canto-curses \
             profile-sync-daemon ttf-font-awesome
+
+cd ~/.build/arc-icon-theme
+./autogen.sh --prefix=/usr
+sudo make install
+
+cd ~
 
 read -p "-- Install gaming goodness? May take a minute. [y/N] " yna
 case $yna in

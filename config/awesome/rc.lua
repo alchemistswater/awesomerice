@@ -46,15 +46,12 @@ end
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---beautiful.init(gears.filesystem.get_themes_dir() .. "nord/theme.lua")
 beautiful.init(awful.util.getdir("config") .. "/themes/nord/theme.lua")
---beautiful.init(gears.filesystem.get_themes_dir() .. "nord/theme.lua")
-beautiful.useless_gap = 5
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "gvim"
-editor_cmd = terminal .. " -e " .. editor
+editor_cmd = editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
