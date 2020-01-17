@@ -17,7 +17,7 @@ sudo pacman -S go ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
             diff-so-fancy gnome-keyring xfce4-notifyd xsel xdotool \
             xorg-server xorg-xinit xorg-xrdb xorg-xprop awesome \
             pulseaudio-alsa exa pavucontrol tmux bash-completion pamixer \
-	    fff fd bat ripgrep httpie sxiv fzf
+	    fff fd bat ripgrep httpie sxiv fzf wireguard-arch wireguard-tools
 
 # Link dash to /bin/sh for performance boost.
 # Then link several font config files for better font display.
@@ -55,7 +55,7 @@ makepkg -si
 yay -S picom bitwarden bitwarden-rofi youtube-dl pfetch-git \
             ckb-next kube moka-icon-theme lxappearance \
 	    sox imagemagick i3lock canto-curses musikcube \
-            profile-sync-daemon ttf-font-awesome
+            profile-sync-daemon ttf-font-awesome mullvad-vpn
 
 cd ~/.builds/arc-icon-theme
 ./autogen.sh --prefix=/usr
