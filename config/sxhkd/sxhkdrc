@@ -48,7 +48,7 @@ super + d
 
 # Pass Launcher
 super + shift + d
-    rofi-pass
+    bwmenu
 
 # screen lock
 super + shift + z

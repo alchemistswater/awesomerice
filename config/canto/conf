@@ -345,7 +345,6 @@
             "maintag:ZONE TOONS",
             "maintag:Linux For Everyone",
             "maintag:The Game Technician",
-            "maintag:DistroTube",
             "maintag:DorianDotSlash",
             "maintag:Unus Annus",
             "maintag:The Spiffing Brit",
@@ -653,10 +652,6 @@
             "url": "https://www.forbes.com/sites/jasonevangelho/feed/"
         },
         {
-            "name": "DistroTube",
-            "url": "https://invidio.us/feed/channel/UCVls1GmFKf6WlTraIb_IaJg"
-        },
-        {
             "name": "DorianDotSlash",
             "url": "https://invidio.us/feed/channel/UCJYVW4HVrMWpUvvsjPQc8-Q"
         },
@@ -715,6 +710,10 @@
         {
             "name": "Paranatural",
             "url": "http://www.paranatural.net/rss.php"
+        },
+        {
+            "name": "Arch Linux: Recent news updates",
+            "url": "https://www.archlinux.org/feeds/news/"
         }
     ],
     "tags": {

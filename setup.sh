@@ -12,12 +12,12 @@ sudo pacman-key --init
 
 sudo pacman -S go ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
             ttf-hack nextcloud-client ttf-linux-libertine rofi mpv \
-            kitty kitty-terminfo dash gvim scrot \
+            kitty kitty-terminfo dash gvim scrot htop arc-gtk-theme \
             firefox sxhkd zathura-pdf-mupdf libnotify xclip \
-            diff-so-fancy gnome-keyring xfce4-notifyd \
+            diff-so-fancy gnome-keyring xfce4-notifyd xsel xdotool \
             xorg-server xorg-xinit xorg-xrdb xorg-xprop awesome \
             pulseaudio-alsa exa pavucontrol tmux bash-completion pamixer \
-	    mpd ncmpcpp mpc fff fd bat ripgrep httpie sxiv fzf
+	    fff fd bat ripgrep httpie sxiv fzf
 
 # Link dash to /bin/sh for performance boost.
 # Then link several font config files for better font display.
@@ -34,8 +34,8 @@ sudo install -Dm 644 other/dashbinsh.hook /usr/share/libalpm/hooks/
 sudo install -Dm 644 other/50-mouse-acceleration.conf /etc/X11/xorg.conf.d/
 
 # Make some folders. Screenshots will go in the captures folder.
-mkdir -p ~/.config ~/.build ~/Images/Captures ~/Images/Wallpapers \
-            $LINKDOT/config/mpd/playlists ~/Music
+mkdir -p ~/.config ~/.builds ~/Images/Captures ~/Images/Wallpapers \
+            $LINKDOT/config/mpd/playlists ~/Music ~/.config/awesome/themes
 
 # Move provided wallpapers to the wallpapers folder
 cp -r wallpapers/* ~/Images/Wallpapers
@@ -45,18 +45,19 @@ git clone https://aur.archlinux.org/yay.git ~/.build/yay
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-git clone https://github.com/horst3180/arc-icon-theme --depth 1 ~/.build/arc-icon-theme
+git clone https://github.com/horst3180/arc-icon-theme --depth 1 ~/.builds/arc-icon-theme
+git clone https://github.com/alchemistswater/awesome-wm-nord-theme.git ~/.config/awesome/themes/nord
 
 # Install them
-cd ~/.build/yay
+cd ~/.builds/yay
 makepkg -si
 
-yay -S picom rofi-pass pass-otp pfetch-git \
-            ckb-next kube moka-icon-theme \
-	    sox imagemagick i3lock canto-curses \
+yay -S picom bitwarden bitwarden-rofi youtube-dl pfetch-git \
+            ckb-next kube moka-icon-theme lxappearance \
+	    sox imagemagick i3lock canto-curses musikcube \
             profile-sync-daemon ttf-font-awesome
 
-cd ~/.build/arc-icon-theme
+cd ~/.builds/arc-icon-theme
 ./autogen.sh --prefix=/usr
 sudo make install
 
@@ -73,10 +74,13 @@ esac
 
 read -p "-- Install communication goodness? May take a minute. [y/N] " yna
 case $yna in
-            [Yy]* ) yay -S telegram-desktop whatsapp-nativefier riot-desktop
+            [Yy]* ) yay -S finch aspell-en telegram-desktop \
+		    purple-gnome-keyring cordless-git
                     ;;
                         * ) echo "-- skipping";;
 esac
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
 # Link all dotfiles into their appropriate locations
 cd ~
